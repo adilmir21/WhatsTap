@@ -1,17 +1,29 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import Chats from '../../assets/data/chats.json'
+import { StyleSheet, Text, View, ImageBackground, FlatList } from 'react-native'
+import bg from '../../assets/images/BG.png'
+import Message from '../components/Message'
+import messages from '../../assets/data/messages.json'
 import React from 'react'
-import ChatListItem from '../components/ChatListItem'
 
 const ChatScreen = () => {
   return (
-    <FlatList 
-      data={Chats}
-      renderItem={({item})=><ChatListItem chat={item}/>}
-    />
+    <ImageBackground source={bg} style= {styles.bg}>
+      <FlatList 
+        data={messages}
+        renderItem = {({item})=><Message message={item} />}
+        style = {styles.list}
+        inverted
+      />
+    </ImageBackground>
   )
 }
 
-const styles = StyleSheet.create({})
 export default ChatScreen
 
+const styles = StyleSheet.create({
+    bg: {
+        flex: 1,
+    },
+    list: {
+        padding: 10,
+    }
+})
